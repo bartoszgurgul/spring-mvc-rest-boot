@@ -1,5 +1,6 @@
 package pl.javastart.springmvcrestboot.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import pl.javastart.springmvcrestboot.model.City;
@@ -37,9 +38,8 @@ public class CityController {
         return cities.get(id);
     }
 
-    @PostMapping(
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public void save(@RequestBody City city){
         cities.add(city);
     }
